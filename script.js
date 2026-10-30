@@ -46,6 +46,30 @@ window.onload = async function() {
             });
             characterDiv.appendChild(checkbox);
 
+            container.appendChild(characterDiv);
+        });
+    }
+
+    
+    function renderPagination() {
+        paginationContainer.innerHTML = "";
+        const totalPages = Math.ceil(characters.length / itemsPerPage);
+        
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement("button");
+            pageButton.textContent = i;
+            pageButton.addEventListener("click", () => {
+                currentPage = i;
+                renderCharacters(currentPage);
+            });
+            paginationContainer.appendChild(pageButton);
+        }
+    }
+    
+    renderCharacters(currentPage);
+    renderPagination();
+}
+
 
 
 
@@ -70,3 +94,4 @@ async function getImage(name) {
     const imageUrl = data.image_url;
     return imageUrl;
 }
+
