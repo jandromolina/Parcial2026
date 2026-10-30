@@ -1,4 +1,4 @@
-const URL = "https://bn9ct5dd-3000.uks1.devtunnels.ms/"
+const URL = "http://localhost:3000/api/onepiece"
 
 
 
