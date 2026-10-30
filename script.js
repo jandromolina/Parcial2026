@@ -95,3 +95,31 @@ async function getImage(name) {
     return imageUrl;
 }
 
+async function searchCharacter(name){
+    try{ 
+    const response = await fetch(`${URL}characters/${name}`);
+    if (!response.ok) throw new Error('Not found');
+    const data = await response.json();
+    return data;
+    }catch(error){
+        return null;
+    }
+
+}
+async function searchCharacterByName(event){
+    event.preventDefault(); 
+    const input = document.getElementById('inputName');
+    const busqueda = document.getElementById('busqueda');
+    const characterName = input.value;
+    const character = await searchCharacter(characterName);
+    if (character){ 
+        busqueda.innerHTML = '';
+        const img = document.createElement('img');
+        img.className = 'imagen-search';
+        img.src = character.image_url;
+        busqueda.appendChild(img);
+    }
+    else{
+        busqueda.innerHTML = 'Character not found';
+    }
+}
