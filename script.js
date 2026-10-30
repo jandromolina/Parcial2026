@@ -7,6 +7,9 @@ window.onload = async function() {
     const llist = document.getElementById("llista");
    
 
+
+    
+    
     
 
 }
