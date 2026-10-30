@@ -1,4 +1,4 @@
-const URL = "http://localhost:3000/api/onepiece"
+const URL = "http://localhost:3000/api/onepiece";
 
 
 
@@ -19,7 +19,32 @@ window.onload = async function() {
             const characterDiv = document.createElement("div");
             characterDiv.classList.add("character");
             
-          
+            const imageUrl = await getImage(character.name);
+            const imageElement = document.createElement("img");
+            imageElement.src = imageUrl;
+            characterDiv.appendChild(imageElement);
+            
+            const nameElement = document.createElement("h3");
+            nameElement.textContent = character.name;
+            characterDiv.appendChild(nameElement);
+            
+            const activeBounty = character.bounties.find(bounty => bounty.is_active);
+            if (activeBounty) {
+                const bountyElement = document.createElement("p");
+                bountyElement.textContent = `Bounty: ${activeBounty.amount}`;
+                characterDiv.appendChild(bountyElement);
+            }
+
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.addEventListener("change", (event) => {
+                if (event.target.checked) {
+                   
+                } else {
+                    
+                }
+            });
+            characterDiv.appendChild(checkbox);
 
 
 
